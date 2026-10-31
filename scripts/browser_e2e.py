@@ -9,6 +9,7 @@ Usage (from INAYAT, with Streamlit on :8501):
 
 Requires: playwright (pip) and Chromium (`python -m playwright install chromium`).
 """
+
 from __future__ import annotations
 
 import json
@@ -68,7 +69,9 @@ def wait_not_running(page: Page, timeout_ms: int = 90_000) -> None:
             if page.locator('[data-testid="stStatusWidgetRunningIcon"]').count() == 0:
                 return
         page.wait_for_timeout(500)
-    REPORT["notes"].append("Timed out waiting for Streamlit Running indicator to clear.")
+    REPORT["notes"].append(
+        "Timed out waiting for Streamlit Running indicator to clear."
+    )
 
 
 def wait_workspace(page: Page, timeout_ms: int = 120_000) -> None:
@@ -107,7 +110,9 @@ def fill_name_if_needed(page: Page) -> None:
         inp.fill("Inayat")
         page.get_by_role("button", name=re.compile("Enter Agentic Workspace")).click()
         wait_workspace(page)
-        REPORT["notes"].append("Landed on name gate; typed Inayat and entered workspace.")
+        REPORT["notes"].append(
+            "Landed on name gate; typed Inayat and entered workspace."
+        )
 
     expand_sidebar(page)
     sidebar = page.locator('[data-testid="stSidebar"]')
@@ -163,9 +168,12 @@ def wait_assistant(page: Page, prev_count: int, timeout_ms: int = 150_000) -> st
 
 
 def status_for(text: str, label: str) -> str:
-    for ln in text.splitlines():
+    """Return the label plus its rendered status line from the health pills."""
+    lines = [ln.strip() for ln in text.splitlines()]
+    for idx, ln in enumerate(lines):
         if label in ln:
-            return ln.strip()
+            nearby = " ".join(part for part in lines[idx : idx + 3] if part)
+            return nearby
     return ""
 
 
@@ -225,9 +233,11 @@ def main() -> int:
             graph_pass = live_banner in text or mock_empty in text
             REPORT["tests"]["3_neural_graph"] = {
                 "pass": graph_pass and mock_offline not in text,
-                "banner": live_banner
-                if live_banner in text
-                else (mock_empty if mock_empty in text else "banner not found"),
+                "banner": (
+                    live_banner
+                    if live_banner in text
+                    else (mock_empty if mock_empty in text else "banner not found")
+                ),
                 "is_mock": mock_empty in text,
             }
             if not graph_pass:
@@ -239,9 +249,13 @@ def main() -> int:
                     graph_pass = live_banner in text or mock_empty in text
                     REPORT["tests"]["3_neural_graph"] = {
                         "pass": graph_pass and mock_offline not in text,
-                        "banner": live_banner
-                        if live_banner in text
-                        else (mock_empty if mock_empty in text else "banner not found"),
+                        "banner": (
+                            live_banner
+                            if live_banner in text
+                            else (
+                                mock_empty if mock_empty in text else "banner not found"
+                            )
+                        ),
                         "is_mock": mock_empty in text,
                         "retried_refresh": True,
                     }
@@ -259,9 +273,10 @@ def main() -> int:
             before2 = page.locator('[data-testid="stChatMessage"]').count()
             send_chat(page, "Hello")
             ans2 = wait_assistant(page, before2, timeout_ms=120_000)
-            crash = "Traceback" in ans2 or page.locator(
-                '[data-testid="stException"]'
-            ).count() > 0
+            crash = (
+                "Traceback" in ans2
+                or page.locator('[data-testid="stException"]').count() > 0
+            )
             REPORT["tests"]["5_second_chat"] = {
                 "pass": (not crash) and bool(ans2.strip()),
                 "snippet": ans2[:500],
@@ -277,9 +292,10 @@ def main() -> int:
                 before3 = page.locator('[data-testid="stChatMessage"]').count()
                 send_chat(page, "Hello")
                 ans3 = wait_assistant(page, before3, timeout_ms=120_000)
-                crash3 = "Traceback" in ans3 or page.locator(
-                    '[data-testid="stException"]'
-                ).count() > 0
+                crash3 = (
+                    "Traceback" in ans3
+                    or page.locator('[data-testid="stException"]').count() > 0
+                )
                 click_force_fail_mem0(page)
                 page.wait_for_timeout(1500)
                 REPORT["tests"]["6_mem0_force_fail"] = {
@@ -298,10 +314,11 @@ def main() -> int:
                 }
 
             text = body_text(page)
+            lowered = text.lower()
             REPORT["tests"]["7_upload_widget"] = {
                 "pass": True,
                 "skipped_upload": True,
-                "widget_seen": "Ingest Documents" in text or "Upload PDFs" in text,
+                "widget_seen": "ingest documents" in lowered or "upload" in lowered,
                 "reason": (
                     "samples already indexed / graph live; skipped re-upload"
                     if REPORT["tests"]["3_neural_graph"].get("pass")

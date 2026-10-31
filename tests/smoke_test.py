@@ -104,7 +104,11 @@ class TestBackwardsCompatibility(unittest.TestCase):
         self.assertEqual(mem0_user_id("  Moham  "), "Moham")
 
     def test_breaker_forced_open_requires_demo_mode(self) -> None:
-        from core.resilience import CircuitBreaker, DemoModeRequired, set_breaker_forced_open
+        from core.resilience import (
+            CircuitBreaker,
+            DemoModeRequired,
+            set_breaker_forced_open,
+        )
         from core.settings import clear_settings_cache, get_settings
 
         os.environ["INAYAT_DEMO_MODE"] = "false"
@@ -123,7 +127,11 @@ class TestBackwardsCompatibility(unittest.TestCase):
         self.assertFalse(cb.forced_open)
 
     def test_clear_stale_forced_breakers_when_demo_off(self) -> None:
-        from core.resilience import CircuitBreaker, clear_stale_forced_breakers, set_breaker_forced_open
+        from core.resilience import (
+            CircuitBreaker,
+            clear_stale_forced_breakers,
+            set_breaker_forced_open,
+        )
         from core.settings import clear_settings_cache
 
         os.environ["INAYAT_DEMO_MODE"] = "true"
@@ -360,9 +368,7 @@ class TestFailureDesign(unittest.TestCase):
         self.assertTrue(
             _node_allowed_for_user(["Chunk"], {"user_id": "alice"}, "alice")
         )
-        self.assertFalse(
-            _node_allowed_for_user(["Chunk"], {"user_id": "bob"}, "alice")
-        )
+        self.assertFalse(_node_allowed_for_user(["Chunk"], {"user_id": "bob"}, "alice"))
         self.assertTrue(_node_allowed_for_user(["Entity"], {}, "alice"))
         self.assertFalse(
             _node_allowed_for_user(["Entity"], {"user_id": "bob"}, "alice")
@@ -517,7 +523,9 @@ class TestAgentPipeline(unittest.TestCase):
     @patch("core.agent.configure_llama_settings")
     @patch("core.agent.retrieve_user_chunks")
     @patch("core.agent.get_gemini_llm")
-    def test_query_rag_success(self, mock_get_llm, mock_retrieve, _mock_configure) -> None:
+    def test_query_rag_success(
+        self, mock_get_llm, mock_retrieve, _mock_configure
+    ) -> None:
         mock_retrieve.return_value = [
             {"text": "AI is intelligence in machines.", "file_name": "notes.txt"}
         ]
@@ -633,9 +641,7 @@ class TestMemoryContext(unittest.TestCase):
 
     @patch("core.memory.get_memories")
     @patch("core.memory.search_memories")
-    def test_build_memory_context_merges_and_caps(
-        self, mock_search, mock_get
-    ) -> None:
+    def test_build_memory_context_merges_and_caps(self, mock_search, mock_get) -> None:
         mock_search.return_value = ["User likes tea"]
         mock_get.return_value = ["User likes tea", "User is in Pune"]
         from core.memory import build_memory_context
@@ -706,7 +712,9 @@ class TestIngestIsolation(unittest.TestCase):
             self.assertEqual([p.name for p in skipped], ["old.txt"])
             pending_only, _ = _pending_files(user_dir, only_files=["new.txt"])
             self.assertEqual([p.name for p in pending_only], ["new.txt"])
-            manifest = json.loads((user_dir / ".indexed.json").read_text(encoding="utf-8"))
+            manifest = json.loads(
+                (user_dir / ".indexed.json").read_text(encoding="utf-8")
+            )
             self.assertIn("old.txt", manifest["files"])
 
     def test_load_documents_stamps_user_id_on_txt(self) -> None:
@@ -724,7 +732,11 @@ class TestIngestIsolation(unittest.TestCase):
         self.assertIn("master data", docs[0].text.lower())
 
     def test_list_user_documents_returns_saved_files(self) -> None:
-        from core.ingest import list_user_documents, save_uploads, unindexed_document_names
+        from core.ingest import (
+            list_user_documents,
+            save_uploads,
+            unindexed_document_names,
+        )
 
         saved = save_uploads(
             "smoke_list_docs",

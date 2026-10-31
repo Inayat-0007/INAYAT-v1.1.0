@@ -38,10 +38,7 @@ def _documents_available_for_rag() -> bool:
     for child in docs_root.iterdir():
         if not child.is_dir() or child.name.startswith(("_", ".")):
             continue
-        if any(
-            f.is_file() and not f.name.startswith(".")
-            for f in child.iterdir()
-        ):
+        if any(f.is_file() and not f.name.startswith(".") for f in child.iterdir()):
             return True
     return False
 
@@ -208,9 +205,7 @@ class TestBackendAgentRAG(unittest.TestCase):
     def test_agent_query_rag(self):
         from core.agent import query
 
-        ans = query(
-            "Who is the CEO of INAYAT AI Solutions?", user_id=_RAG_USER_ID
-        )
+        ans = query("Who is the CEO of INAYAT AI Solutions?", user_id=_RAG_USER_ID)
         self.assertIsInstance(ans, str)
         self.assertGreater(len(ans), 0)
         self.assertIn(
@@ -219,7 +214,9 @@ class TestBackendAgentRAG(unittest.TestCase):
             msg=f"Expected CEO from sample PDF; got: {ans!r}",
         )
 
-        fallback_ans = query("What is 5 + 5?", user_id=_RAG_USER_ID)
+        # Pure-LLM degradation path: a profile with no documents has no chunks,
+        # so the agent must fall back to Gemini instead of the RAG gate.
+        fallback_ans = query("What is 5 + 5?", user_id=f"{_RAG_USER_ID}_empty")
         self.assertIn("10", fallback_ans)
 
 
