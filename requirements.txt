@@ -20,6 +20,9 @@ mem0ai
 # Neo4j graph database driver
 neo4j
 
+# PDF text extraction (required for PDF ingest in core/ingest.py)
+pypdf
+
 # Resilience & configuration
 tenacity
 python-dotenv

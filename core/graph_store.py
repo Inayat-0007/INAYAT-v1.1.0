@@ -7,6 +7,7 @@ resilient ``run_cypher`` helper.  Also provides the
 """
 
 import logging
+import os
 import threading
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence
@@ -19,6 +20,25 @@ from core.identity import UserId
 from core.settings import InayatSettings, get_settings
 
 logger = logging.getLogger("inayat")
+
+
+def _ensure_ca_bundle() -> None:
+    """Point OpenSSL at certifi's CA bundle when none is configured.
+
+    Neo4j Aura serves SSL.com-issued certificates whose root is absent from
+    the Windows system store.  The Neo4j driver calls ``load_default_certs``,
+    which honours ``SSL_CERT_FILE``.
+    """
+    if os.environ.get("SSL_CERT_FILE"):
+        return
+    try:
+        import certifi
+    except ImportError:  # pragma: no cover - certifi ships with requests
+        return
+    os.environ["SSL_CERT_FILE"] = certifi.where()
+
+
+_ensure_ca_bundle()
 
 _driver: Optional[Driver] = None
 _driver_lock = threading.Lock()
@@ -463,7 +483,11 @@ def _text_snippet(text: Any, limit: int = 48) -> str:
     if not isinstance(text, str):
         return ""
     stripped = text.strip()
-    if not stripped or stripped.startswith("%PDF") or stripped == "[PDF binary omitted]":
+    if (
+        not stripped
+        or stripped.startswith("%PDF")
+        or stripped == "[PDF binary omitted]"
+    ):
         return ""
     for line in stripped.splitlines():
         cleaned = " ".join(line.split())
@@ -484,10 +508,18 @@ def _node_display_label(
     snippet = _text_snippet(props.get("text"), 48)
     if group == "Chunk" and snippet:
         return snippet
-    if isinstance(name, str) and name.strip() and not name.startswith(_INTERNAL_LABEL_PREFIX):
+    if (
+        isinstance(name, str)
+        and name.strip()
+        and not name.startswith(_INTERNAL_LABEL_PREFIX)
+    ):
         return name.strip()[:60]
     named = props.get("name")
-    if isinstance(named, str) and named.strip() and not named.startswith(_INTERNAL_LABEL_PREFIX):
+    if (
+        isinstance(named, str)
+        and named.strip()
+        and not named.startswith(_INTERNAL_LABEL_PREFIX)
+    ):
         return named.strip()[:60]
     file_name = props.get("file_name")
     if file_name:

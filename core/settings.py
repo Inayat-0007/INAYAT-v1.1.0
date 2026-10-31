@@ -71,12 +71,16 @@ class InayatSettings(BaseSettings):
     @model_validator(mode="after")
     def validate_chunking(self) -> "InayatSettings":
         if self.chunk_overlap >= self.chunk_size:
-            raise ValueError("INAYAT_CHUNK_OVERLAP must be less than INAYAT_CHUNK_SIZE.")
+            raise ValueError(
+                "INAYAT_CHUNK_OVERLAP must be less than INAYAT_CHUNK_SIZE."
+            )
         return self
 
     @property
     def cors_origin_list(self) -> List[str]:
-        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+        return [
+            origin.strip() for origin in self.cors_origins.split(",") if origin.strip()
+        ]
 
     def missing_recommended_vars(self) -> List[str]:
         missing: List[str] = []

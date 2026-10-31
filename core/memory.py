@@ -232,11 +232,28 @@ def build_memory_context(
     return "\n".join(formatted), merged
 
 
+_PING_USER_ID = "__inayat_health__"
+
+
 def ping_mem0() -> bool:
-    """Quick connectivity check for the Mem0 API.
+    """Verify the Mem0 API key with a lightweight read.
+
+    Creating the client alone does not validate the key, so issue a real
+    ``get_all`` call for a sentinel user.
 
     Returns:
-        ``True`` when the client initialises without error.
+        ``True`` when the Mem0 API answers successfully.
     """
     client = _get_client()
-    return client is not None
+    if client is None or not _cb.allow_request():
+        return False
+
+    try:
+        client.get_all(filters={"user_id": _PING_USER_ID})
+    except Exception as exc:
+        logger.warning("Mem0 ping failed: %s", exc)
+        _cb.record_failure()
+        return False
+
+    _cb.record_success()
+    return True

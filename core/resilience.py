@@ -269,4 +269,3 @@ def set_breaker_forced_open(
         service or breaker.service,
         forced,
     )
-

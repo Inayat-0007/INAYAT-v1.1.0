@@ -17,16 +17,27 @@ Write-Host "[4/6] Checking data/documents..." -ForegroundColor Cyan
 if (-not (Test-Path "data/documents")) {
     New-Item -ItemType Directory -Path "data/documents" -Force | Out-Null
 }
-$pdfFiles = Get-ChildItem -Path data/documents -Filter *.pdf -ErrorAction SilentlyContinue
-$txtFiles = Get-ChildItem -Path data/documents -Filter *.txt -ErrorAction SilentlyContinue
-if (-not $pdfFiles -and -not $txtFiles) {
-    Write-Host "WARNING: No document files found. Creating a dummy document for testing..." -ForegroundColor Yellow
-    # Create a minimal text file that LlamaIndex can index (as plain text)
-    @"
+$profileDocs = Get-ChildItem -Path "data/documents" -Recurse -File -ErrorAction SilentlyContinue |
+    Where-Object {
+        $_.Extension -in ".pdf", ".txt" -and
+        $_.DirectoryName -notmatch "[\\/]_samples([\\/]|$)"
+    }
+if (-not $profileDocs) {
+    $demoDir = "data/documents/Demo"
+    New-Item -ItemType Directory -Path $demoDir -Force | Out-Null
+    $samples = Get-ChildItem -Path "data/documents/_samples" -File -ErrorAction SilentlyContinue |
+        Where-Object { $_.Extension -in ".pdf", ".txt" }
+    if ($samples) {
+        Copy-Item -Path $samples.FullName -Destination $demoDir -Force
+        Write-Host "Seeded demo profile 'Demo' from data/documents/_samples." -ForegroundColor Yellow
+    } else {
+        @"
 I.N.A.Y.A.T. is a next-generation agentic RAG system built for MCA 2026.
 It combines Google Gemini, Mem0 memory, and Neo4j knowledge graphs.
 The architecture uses a self-healing circuit breaker.
-"@ | Out-File -FilePath data/documents/sample.txt -Encoding utf8
+"@ | Out-File -FilePath "$demoDir/sample.txt" -Encoding utf8
+        Write-Host "Created demo document data/documents/Demo/sample.txt." -ForegroundColor Yellow
+    }
 }
 
 Write-Host "[5/6] Running service warmup..." -ForegroundColor Cyan

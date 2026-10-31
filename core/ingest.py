@@ -14,7 +14,17 @@ import time
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
-from typing import BinaryIO, Dict, Iterable, List, Literal, Optional, Sequence, Tuple, Union
+from typing import (
+    BinaryIO,
+    Dict,
+    Iterable,
+    List,
+    Literal,
+    Optional,
+    Sequence,
+    Tuple,
+    Union,
+)
 
 from llama_index.core import Document, PropertyGraphIndex
 from llama_index.core.indices.property_graph import ImplicitPathExtractor
@@ -517,14 +527,14 @@ def build_index(
             )
         try:
             with _user_lock(uid):
-                result = _execute_index_build(
-                    uid, only_files=only_files, force=force
-                )
+                result = _execute_index_build(uid, only_files=only_files, force=force)
             with _jobs_lock:
                 _index_jobs[uid] = _IndexJob(
                     status="ready" if result is not None else "error",
                     job_id=_index_jobs[uid].job_id,
-                    error=None if result is not None else "Index build returned no index.",
+                    error=(
+                        None if result is not None else "Index build returned no index."
+                    ),
                     updated_at=time.time(),
                 )
             return result
@@ -566,7 +576,9 @@ def schedule_index_build(
                 _index_jobs[uid] = _IndexJob(
                     status="ready" if result is not None else "error",
                     job_id=job_id,
-                    error=None if result is not None else "Index build returned no index.",
+                    error=(
+                        None if result is not None else "Index build returned no index."
+                    ),
                     updated_at=time.time(),
                 )
         except Exception as exc:
@@ -579,9 +591,7 @@ def schedule_index_build(
                     updated_at=time.time(),
                 )
 
-    threading.Thread(
-        target=_worker, name=f"inayat-index-{uid}", daemon=True
-    ).start()
+    threading.Thread(target=_worker, name=f"inayat-index-{uid}", daemon=True).start()
     return job_id
 
 

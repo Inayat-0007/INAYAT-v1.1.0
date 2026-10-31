@@ -64,9 +64,13 @@ def warmup() -> bool:
 
         idx = safe_execute(lambda: get_index("default"), fallback=None)
         if idx:
-            logger.info("  PropertyGraphIndex      -> loaded for existing default profile")
+            logger.info(
+                "  PropertyGraphIndex      -> loaded for existing default profile"
+            )
         else:
-            logger.warning("  PropertyGraphIndex      -> default profile exists but index failed")
+            logger.warning(
+                "  PropertyGraphIndex      -> default profile exists but index failed"
+            )
     else:
         logger.info("  PropertyGraphIndex      -> skipped (no documents for default)")
 

@@ -4,6 +4,7 @@
 HTTP adapter only: maps REST routes to ``core.*`` modules.
 """
 
+import asyncio
 import logging
 import mimetypes
 import os
@@ -68,9 +69,13 @@ _MUTATING_PREFIXES = (
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    """Boot health sweep + Neo4j driver cleanup (parity with Streamlit)."""
+    """Boot health sweep + Neo4j driver cleanup (parity with Streamlit).
+
+    ``run_startup`` performs blocking network probes (Gemini/Mem0/Neo4j) that
+    call ``asyncio.run`` internally, so it must run off the event loop.
+    """
     global _ok, _health, _warnings
-    ok, health, warnings = run_startup()
+    ok, health, warnings = await asyncio.to_thread(run_startup)
     _ok = ok
     if health:
         _health = health
@@ -176,10 +181,16 @@ def api_health():
     return {
         "statuses": {
             "gemini": statuses.get("gemini", "⚪ Unknown"),
-            "mem0": "🔴 Forced Fail" if is_mem_forced else statuses.get("mem0", "⚪ Unknown"),
-            "neo4j": "🔴 Forced Fail"
-            if is_graph_forced
-            else statuses.get("neo4j", "⚪ Unknown"),
+            "mem0": (
+                "🔴 Forced Fail"
+                if is_mem_forced
+                else statuses.get("mem0", "⚪ Unknown")
+            ),
+            "neo4j": (
+                "🔴 Forced Fail"
+                if is_graph_forced
+                else statuses.get("neo4j", "⚪ Unknown")
+            ),
         },
         "breakers": {"mem0": is_mem_forced, "neo4j": is_graph_forced},
     }
@@ -273,7 +284,9 @@ def api_index_status(user_id: str):
 
 
 @app.post("/api/upload")
-async def api_upload_files(user_id: str = Form(...), files: List[UploadFile] = File(...)):
+async def api_upload_files(
+    user_id: str = Form(...), files: List[UploadFile] = File(...)
+):
     _require_boot_ok()
     user = _parse_user_id(user_id)
     payloads = []
@@ -283,16 +296,20 @@ async def api_upload_files(user_id: str = Form(...), files: List[UploadFile] = F
         payloads.append((upload.filename, await upload.read()))
 
     try:
-        saved = save_uploads(user.value, payloads, overwrite=True)
+        saved = await asyncio.to_thread(
+            save_uploads, user.value, payloads, overwrite=True
+        )
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     if not saved:
-        raise HTTPException(status_code=400, detail="No valid PDF or TXT files were uploaded.")
+        raise HTTPException(
+            status_code=400, detail="No valid PDF or TXT files were uploaded."
+        )
 
     settings = get_settings()
     if settings.sync_ingest:
-        build_index(user.value, only_files=saved)
+        await asyncio.to_thread(build_index, user.value, only_files=saved)
         return {
             "status": "success",
             "indexed_files": saved,
@@ -338,15 +355,23 @@ async def api_upload_files_sync(
         payloads.append((upload.filename, await upload.read()))
 
     try:
-        saved = save_uploads(user.value, payloads, overwrite=True)
+        saved = await asyncio.to_thread(
+            save_uploads, user.value, payloads, overwrite=True
+        )
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     if not saved:
-        raise HTTPException(status_code=400, detail="No valid PDF or TXT files were uploaded.")
+        raise HTTPException(
+            status_code=400, detail="No valid PDF or TXT files were uploaded."
+        )
 
-    build_index(user.value, only_files=saved)
-    return {"status": "success", "indexed_files": saved, "index_status": get_index_status(user.value)}
+    await asyncio.to_thread(build_index, user.value, only_files=saved)
+    return {
+        "status": "success",
+        "indexed_files": saved,
+        "index_status": get_index_status(user.value),
+    }
 
 
 frontend_dist = os.path.join(os.path.dirname(__file__), "frontend", "dist")
