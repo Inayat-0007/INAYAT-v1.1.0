@@ -10,7 +10,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+/dist/
 downloads/
 eggs/
 .eggs/
@@ -140,6 +140,11 @@ cython_debug/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Local tooling / dev scratch
+.vscode/
+.kilo/
+scratch/
 
 # Project-specific logs and state
 inayat_debug.log

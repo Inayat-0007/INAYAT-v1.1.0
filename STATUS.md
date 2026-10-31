@@ -1,11 +1,12 @@
-# I.N.A.Y.A.T. — Current Status (Examiner Sheet)
+﻿# I.N.A.Y.A.T. — Current Status (Examiner Sheet)
 
-**Last updated:** 2026-08-13  
+**Last updated:** 2026-10-31  
+**Version:** 1.1.0 ([CHANGELOG.md](CHANGELOG.md) · [Releases](https://github.com/Inayat-0007/INAYAT/releases))  
 **Maturity:** Advanced MVP / demo-ready — not hardened production.
 
 ## Examiner one-liner
 
-I.N.A.Y.A.T. is a **single-agent, production-pattern RAG system** (Gemini + LlamaIndex PropertyGraphIndex + Neo4j + Mem0) with **documented** dual UIs, **typed** config, **validated** user ids, **CI that matches Docker (Python 3.12)**, and **honest** test counts (**52 smoke** on every PR, **10 live** on schedule). Isolation is **soft multi-tenancy** on a shared graph, which is acceptable for a demo and explicitly not a multi-tenant SaaS.
+I.N.A.Y.A.T. is a **single-agent, production-pattern RAG system** (Gemini + LlamaIndex PropertyGraphIndex + Neo4j + Mem0) with **documented** dual UIs, **typed** config, **validated** user ids, **CI that matches Docker (Python 3.12)**, and **honest** test counts (**59 smoke** on every PR, **10 live** on schedule). Isolation is **soft multi-tenancy** on a shared graph, which is acceptable for a demo and explicitly not a multi-tenant SaaS.
 
 ## Canonical facts
 
@@ -17,9 +18,9 @@ I.N.A.Y.A.T. is a **single-agent, production-pattern RAG system** (Gemini + Llam
 | **Embeddings**       | `gemini-embedding-001` (3072-dim)                                                         |
 | **Chunking**         | size 512, overlap 64 (`INAYAT_CHUNK_SIZE` / `INAYAT_CHUNK_OVERLAP`)                       |
 | **Retrieval**        | PropertyGraphIndex, `similarity_top_k=5`, `user_id` metadata filter                       |
-| **Smoke tests**      | 52 (`tests/smoke_test.py`) — run on every CI push                                         |
+| **Smoke tests**      | 59 (`tests/smoke_test.py`) — run on every CI push                                         |
 | **Live integration** | 10 (`tests/backend_feature_test.py`) — manual / scheduled only                            |
-| **CI**               | flake8 + black + gitleaks + pip-audit + smoke + frontend build                            |
+| **CI**               | flake8 + black + gitleaks + pip-audit (advisory) + smoke + frontend build                |
 | **Docker**           | Default SPA `Dockerfile.spa` `:8000`; Streamlit `--profile streamlit` `:8501`             |
 | **Seed docs**        | `data/documents/_samples/` — copy to `{your_name}/`                                       |
 | **UIs**              | Streamlit (`app.py`) + FastAPI/React (`api.py`, `frontend/`)                              |
@@ -41,6 +42,8 @@ Upload PDFs per user under `data/documents/{profile_name}/`. Copy MIT samples fr
 | File                          | Role                                        |
 | ----------------------------- | ------------------------------------------- |
 | `README.md`                   | Install, architecture, canonical facts      |
+| `CHANGELOG.md`                | Version history (Keep a Changelog / SemVer) |
+| `RELEASE_NOTES_v1.1.0.md`     | Notes for the current release               |
 | `CONTEXT.md`                  | Contributor module map                      |
 | `WHAT_TO_FIX.md`              | Issue inventory                             |
 | `HOW_TO_FIX.md`               | Remediation spec                            |

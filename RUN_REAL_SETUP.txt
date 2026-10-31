@@ -1,0 +1,249 @@
+==============================================================================
+I.N.A.Y.A.T. - COMPLETE SETUP FOR A REAL, FULLY-WORKING RUN
+==============================================================================
+Project folder : C:\Users\inaya\Documents\INAYAT
+Source         : GitHub release v1.1.0
+Python         : 3.12.10
+Interpreter    : C:\Users\inaya\AppData\Local\Programs\Python\Python312\python.exe
+Virtualenv     : C:\Users\inaya\Documents\INAYAT\.venv
+App URL        : http://localhost:8501
+Written        : 2026-10-31
+
+This folder is already installed and runs. Use this file to add the
+credentials that turn on every feature with real data, or to rebuild from
+zero on another machine.
+
+------------------------------------------------------------------------------
+PART A - ACCOUNTS AND KEYS YOU MUST CREATE
+------------------------------------------------------------------------------
+Three external services power the app. Only #1 is mandatory to boot.
+
+1) GOOGLE GEMINI  (REQUIRED - app will not start without it)
+   Sign up / create key : https://aistudio.google.com/apikey
+   Free tier            : yes (rate limited)
+   Used for             : chat answers + text embeddings + document indexing
+   Env variable         : GEMINI_API_KEY
+   Models used          : gemini-flash-lite-latest, gemini-embedding-001
+
+2) MEM0 CLOUD MEMORY  (OPTIONAL - enables "remembers you")
+   Sign up / create key : https://app.mem0.ai/dashboard/api-keys
+   Free tier            : yes (limited)
+   Used for             : persistent facts across sessions
+   Env variable         : MEM0_API_KEY
+   Without it           : memory features are silently disabled, app still works
+
+3) NEO4J AURADB  (OPTIONAL - enables graph RAG + graph visualisation)
+   Sign up / create instance : https://console.neo4j.io
+   Free tier                 : AuraDB Free
+   Used for                  : property-graph index, chunk storage, graph view
+   Env variables             : NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD
+   IMPORTANT                 : NEO4J_USERNAME must be "neo4j"
+                               (the code uses the username as the database
+                               name, and Aura's default database is "neo4j")
+   URI format                : neo4j+s://xxxxxxxx.databases.neo4j.io
+   Without it                : app answers via Gemini only; graph shows mock
+
+No other paid services are required.
+
+------------------------------------------------------------------------------
+PART B - .env FILE (edit C:\Users\inaya\Documents\INAYAT\.env)
+------------------------------------------------------------------------------
+Copy the block below into .env and replace the placeholder values.
+Do NOT commit .env with real keys.
+
+# --- REQUIRED ---
+GEMINI_API_KEY=PASTE_YOUR_GEMINI_KEY_HERE
+
+# --- OPTIONAL: persistent memory ---
+MEM0_API_KEY=PASTE_YOUR_MEM0_KEY_HERE
+
+# --- OPTIONAL: graph RAG + visualisation ---
+NEO4J_URI=neo4j+s://PASTE-YOUR-ID.databases.neo4j.io
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=PASTE_YOUR_NEO4J_PASSWORD_HERE
+
+# --- OPTIONAL tuning (defaults shown, leave commented unless needed) ---
+# INAYAT_LLM_MODEL=gemini-flash-lite-latest
+# INAYAT_EMBED_MODEL=gemini-embedding-001
+# INAYAT_CHUNK_SIZE=512
+# INAYAT_CHUNK_OVERLAP=64
+# INAYAT_TOP_K=5
+# INAYAT_MMR_ENABLED=false
+# INAYAT_MMR_LAMBDA=0.7
+# INAYAT_MAX_UPLOAD_BYTES=10485760
+# INAYAT_DEMO_MODE=false
+# INAYAT_API_KEY=
+# INAYAT_CORS_ORIGINS=http://localhost:5173,http://localhost:8000
+# INAYAT_LOG_LEVEL=INFO
+# INAYAT_ALLOW_EMPTY_FROM_EXISTING=false
+# INAYAT_SYNC_INGEST=true
+# INAYAT_MEMORY_CONTEXT_MAX_CHARS=2000
+
+------------------------------------------------------------------------------
+PART C - INSTALL FROM ZERO (only needed on a fresh machine)
+------------------------------------------------------------------------------
+Run in PowerShell:
+
+  cd C:\Users\inaya\Documents\INAYAT
+
+  # 1. create virtualenv
+  C:\Users\inaya\AppData\Local\Programs\Python\Python312\python.exe -m venv .venv
+
+  # 2. install dependencies (pypdf is required for PDF ingest)
+  .\.venv\Scripts\python.exe -m pip install --upgrade pip
+  .\.venv\Scripts\python.exe -m pip install -r requirements.txt -c constraints.txt
+
+  # 3. create your config
+  Copy-Item .env.example .env
+  # then edit .env and add keys (see PART B)
+
+  # 4. (optional) confirm the code base is healthy - no keys needed
+  .\.venv\Scripts\python.exe tests\smoke_test.py
+  # expected: 59/59 pass. These smoke tests need no live keys; the 10 live
+  # integration tests (tests\backend_feature_test.py) require real keys.
+
+------------------------------------------------------------------------------
+PART D - RUN THE APP
+------------------------------------------------------------------------------
+  cd C:\Users\inaya\Documents\INAYAT
+  .\.venv\Scripts\streamlit.exe run app.py --server.port 8501
+
+Open http://localhost:8501
+To stop: press Ctrl+C in that terminal.
+
+If port 8501 is busy, use --server.port 8502 and open that port.
+
+------------------------------------------------------------------------------
+PART E - FIRST REAL RUN (real data)
+------------------------------------------------------------------------------
+1. On the landing page enter a profile name (e.g. INAYAT_TEST_1) and click
+   "Enter Agentic Workspace".
+2. The sidebar "Ingest Documents" section lists files on disk. This folder is
+   already seeded with 4 real documents for profile INAYAT_TEST_1:
+     - inayat_glossary.txt
+     - scenario_1_company_profile.pdf
+     - scenario_2_technical_architecture.pdf
+     - scenario_3_adversarial_roadmap.pdf
+3. With a valid GEMINI_API_KEY and NEO4J credentials, the app auto-indexes
+   these pending files on first load ("Indexing N pending file(s)..."), embeds
+   them with Gemini, and writes the graph to Neo4j.
+4. Add your own files with the "Upload PDFs or TXT files" control
+   (PDF and TXT only; max 10 MB per file by default).
+5. Ask questions in the chat input: "Ask about your documents, or tell me about"
+   Answers route as:
+     - rag     : answered from your indexed document chunks
+     - llm     : no chunks found, answered by Gemini directly
+     - apology : all services unreachable
+6. Side panels: "Workspace Chat" (left) and "Neural Architecture Graph" (right).
+7. Sidebar "Actions": Clear Memory, New Chat.
+
+Real data rules:
+  - Put per-profile documents in: data\documents\<PROFILE_NAME>\
+  - Supported: .pdf (text-based, not scanned images) and .txt (UTF-8)
+  - Re-uploading an unchanged file is skipped; changed files are re-indexed.
+
+------------------------------------------------------------------------------
+PART F - VERIFY EACH SERVICE IS REALLY WORKING
+------------------------------------------------------------------------------
+Run these from C:\Users\inaya\Documents\INAYAT (after filling .env):
+
+  # All three at once
+  .\.venv\Scripts\python.exe -c "from dotenv import load_dotenv; load_dotenv(); from core.health import HealthMonitor; print(HealthMonitor().run_all())"
+
+  # Gemini only (generation)
+  .\.venv\Scripts\python.exe -c "from dotenv import load_dotenv; load_dotenv(); from core.llm_setup import ping_gemini; print('Gemini:', ping_gemini())"
+
+  # Mem0 only
+  .\.venv\Scripts\python.exe -c "from dotenv import load_dotenv; load_dotenv(); from core.memory import ping_mem0; print('Mem0:', ping_mem0())"
+
+  # Neo4j only
+  .\.venv\Scripts\python.exe -c "from dotenv import load_dotenv; load_dotenv(); from core.graph_store import ping_neo4j; print('Neo4j:', ping_neo4j())"
+
+  # Real end-to-end RAG query against the seeded profile
+  .\.venv\Scripts\python.exe -c "from dotenv import load_dotenv; load_dotenv(); from core.agent import query; print(query('What is Inayat AI Solutions?', user_id='INAYAT_TEST_1'))"
+
+Expected healthy output: {'gemini': '...Connected', 'mem0': '...Connected', 'neo4j': '...Connected'}
+(A leading emoji appears in the status strings.)
+
+------------------------------------------------------------------------------
+PART G - WHAT EACH KEY UNLOCKS
+------------------------------------------------------------------------------
+  Gemini only              -> chat + document RAG, no memory, mock graph
+  Gemini + Mem0            -> adds cross-session memory
+  Gemini + Neo4j           -> adds real graph indexing + real graph view
+  Gemini + Mem0 + Neo4j    -> every feature is live
+
+  No Gemini                -> app refuses to start (critical env enforced)
+  Bad/expired Gemini key   -> "Indexing failed: 400 INVALID_ARGUMENT" in the
+                              sidebar and apology answers in chat
+
+------------------------------------------------------------------------------
+PART I - KNOWN NON-BLOCKING ISSUES
+------------------------------------------------------------------------------
+- GET /favicon.png returns 500 in the server log. This is a Streamlit 1.58 /
+  starlette static-route quirk. Cosmetic only; JS/CSS/fonts load with 200 and
+  the UI renders normally.
+- The VS Code "Integrated Browser" panel may show a blank dark page for
+  Streamlit. A normal browser (Edge/Chrome) at http://localhost:8501 renders
+  correctly. This was verified with headless Chromium.
+- Gemini free tier is rate limited; heavy indexing may hit 429s. The app
+  retries with exponential backoff.
+- Neo4j vector similarity uses the vector.similarity.cosine function, which
+  needs Neo4j 5.13+. AuraDB Free is 5.x, so this is fine.
+- Mem0 API shape can change between SDK versions; mem0ai==2.0.4 is pinned.
+
+------------------------------------------------------------------------------
+PART J - TROUBLESHOOTING
+------------------------------------------------------------------------------
+Symptom: "Critical Configuration Missing" on load
+  Cause : GEMINI_API_KEY missing/blank.
+  Fix   : set it in .env, restart Streamlit.
+
+Symptom: "Indexing failed: 400 ... API key not valid"
+  Cause : placeholder or invalid GEMINI_API_KEY.
+  Fix   : replace with a real key from https://aistudio.google.com/apikey.
+
+Symptom: "Indexing failed: Could not extract text from PDF ... scanned"
+  Cause : image-only (scanned) PDF, or a malformed PDF.
+  Fix   : use a text-based PDF, or convert to TXT.
+
+Symptom: Neo4j "Cannot resolve address your-db-id.databases.neo4j.io"
+  Cause : still using the example URI.
+  Fix   : paste the real URI from your Aura console.
+
+Symptom: Mem0 "Invalid API key"
+  Cause : placeholder MEM0_API_KEY.
+  Fix   : paste a real key, or leave it blank to disable memory.
+
+Symptom: Port already in use
+  Fix   : .\.venv\Scripts\streamlit.exe run app.py --server.port 8502
+
+Symptom: ModuleNotFoundError: core
+  Cause : wrong working directory.
+  Fix   : cd into C:\Users\inaya\Documents\INAYAT before launching.
+
+Symptom: "No module named pypdf" during ingest
+  Fix   : .\.venv\Scripts\python.exe -m pip install pypdf==6.9.2
+
+Symptom: Stale cache after changing .env
+  Fix   : fully stop Streamlit (Ctrl+C) and start it again. Env vars are read
+          at startup.
+
+------------------------------------------------------------------------------
+PART K - QUICK CHECKLIST
+------------------------------------------------------------------------------
+[ ] .env exists in C:\Users\inaya\Documents\INAYAT
+[ ] GEMINI_API_KEY is a real key
+[ ] MEM0_API_KEY is a real key            (optional)
+[ ] NEO4J_URI is the real Aura URI        (optional)
+[ ] NEO4J_USERNAME=neo4j
+[ ] NEO4J_PASSWORD is the real password   (optional)
+[ ] .venv exists and dependencies installed
+[ ] pypdf installed
+[ ] Streamlit running on http://localhost:8501
+[ ] Profile created, documents listed, index built
+[ ] Chat returns a "rag" answer grounded in the documents
+
+==============================================================================
+END OF FILE
+==============================================================================

@@ -1,4 +1,4 @@
-# I.N.A.Y.A.T. — CONTEXT.md (Contributor Map)
+﻿# I.N.A.Y.A.T. — CONTEXT.md (Contributor Map)
 
 > **Note:** Canonical facts and test counts live in [README.md](README.md) and [STATUS.md](STATUS.md).
 > This file maps modules for contributors and AI assistants.
@@ -10,9 +10,11 @@
 | Field        | Value                                                         |
 | ------------ | ------------------------------------------------------------- |
 | **Name**     | Intelligent Neural Architecture for Yielding Agentic Thinking |
+| **Version**  | `1.1.0` (see [CHANGELOG.md](CHANGELOG.md))                     |
 | **Model**    | Single-agent RAG (not multi-agent orchestration)              |
 | **Python**   | 3.12                                                          |
 | **Maturity** | Advanced MVP / demo-ready                                     |
+| **Updated**  | 2026-10-31                                                    |
 
 ---
 
@@ -27,7 +29,7 @@
 | RAG        | LlamaIndex PropertyGraphIndex (`0.14.22`) | `core/ingest.py`, `core/agent.py`                              |
 | UI         | Streamlit `1.58.0` + React SPA            | `app.py`, `api.py`, `frontend/`                                |
 | Config     | pydantic-settings                         | `core/settings.py`                                             |
-| CI         | GitHub Actions                            | flake8 + black + gitleaks + pip-audit + smoke + frontend build |
+| CI         | GitHub Actions                            | flake8 + black + gitleaks + pip-audit (advisory) + smoke + frontend build |
 
 ---
 
@@ -69,7 +71,7 @@
 
 | File                            | Count | CI             |
 | ------------------------------- | ----- | -------------- |
-| `tests/smoke_test.py`           | 52    | Yes            |
+| `tests/smoke_test.py`           | 59    | Yes            |
 | `tests/backend_feature_test.py` | 10    | No (live keys) |
 
 Run smoke: `python tests/smoke_test.py`
@@ -84,7 +86,7 @@ On push/PR to `main` or `master` ([ci.yml](.github/workflows/ci.yml)):
 2. black --check
 3. gitleaks
 4. pip-audit (`pip install pip-audit` then `pip-audit -r requirements.txt`)
-5. `python tests/smoke_test.py` (52 tests)
+5. `python tests/smoke_test.py` (59 tests)
 
 Parallel job **frontend-build**: `npm ci` + `npm run build` in `frontend/`.
 
@@ -120,6 +122,9 @@ See `.env.example` for `INAYAT_*` tuning keys.
 
 ## Related docs
 
+- [CHANGELOG.md](CHANGELOG.md) — version history
+- [RELEASE_NOTES_v1.1.0.md](RELEASE_NOTES_v1.1.0.md) — current release notes
+- [RUN_REAL_SETUP.txt](RUN_REAL_SETUP.txt) — end-to-end setup guide
 - [WHAT_TO_FIX.md](WHAT_TO_FIX.md) — issue inventory
 - [HOW_TO_FIX.md](HOW_TO_FIX.md) — remediation spec (§10 order complete; see STATUS.md)
 - [MASTER_DEEP_DIVE_REPORT.txt](MASTER_DEEP_DIVE_REPORT.txt) — historical (superseded for counts)

@@ -1,12 +1,13 @@
-<h1 align="center">🧠 I.N.A.Y.A.T.</h1>
+﻿<h1 align="center">🧠 I.N.A.Y.A.T.</h1>
 <p align="center">
   <strong>Intelligent Neural Architecture for Yielding Agentic Thinking</strong><br>
   <em>Single-agent RAG with isolated user memory, property-graph retrieval, and self-healing resilience.</em>
 </p>
 
 <p align="center">
+  <a href="https://github.com/Inayat-0007/INAYAT/releases/latest"><img src="https://img.shields.io/badge/release-v1.1.0-blueviolet" alt="Latest Release"></a>
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white" alt="Python Version">
-  <img src="https://img.shields.io/badge/Tests-52%20smoke%20%2F%2010%20live-success" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-59%20smoke%20%2F%2010%20live-success" alt="Tests">
   <img src="https://img.shields.io/badge/CI-smoke%20%2B%20frontend-informational" alt="CI Scope">
   <img src="https://img.shields.io/badge/Docker-SPA%20%3A8000-blue?logo=docker&logoColor=white" alt="Docker Ready">
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT License">
@@ -30,8 +31,8 @@
 | **Embeddings**      | `gemini-embedding-001` (3072-dim)                                                        |
 | **Chunking**        | size 512, overlap 64 (env: `INAYAT_CHUNK_SIZE`, `INAYAT_CHUNK_OVERLAP`)                  |
 | **Retrieval**       | PropertyGraphIndex, `similarity_top_k=5`, `user_id` metadata filter                      |
-| **Tests**           | 52 smoke (`tests/smoke_test.py`) + 10 live (`tests/backend_feature_test.py`)             |
-| **CI**              | flake8 (E9,F63,F7,F82) + black + gitleaks + pip-audit + smoke + frontend build           |
+| **Tests**           | 59 smoke (`tests/smoke_test.py`) + 10 live (`tests/backend_feature_test.py`)             |
+| **CI**              | flake8 (E9,F63,F7,F82) + black + gitleaks + pip-audit (advisory) + smoke + frontend build
 | **Docker**          | Default SPA `:8000` (`Dockerfile.spa`); Streamlit `--profile streamlit` `:8501`          |
 | **Seed docs**       | `data/documents/_samples/` (MIT); copy into `data/documents/{your_name}/`                |
 | **UIs**             | Streamlit (`app.py`) and FastAPI+React (`api.py`, `frontend/`)                           |
@@ -39,9 +40,10 @@
 | **Critical env**    | `GEMINI_API_KEY`                                                                         |
 | **Recommended env** | `MEM0_API_KEY`, `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`                          |
 
-**Examiner one-liner:** I.N.A.Y.A.T. is a single-agent, production-pattern RAG system (Gemini + LlamaIndex PropertyGraphIndex + Neo4j + Mem0) with documented dual UIs, typed config, validated user ids, CI that matches Docker (Python 3.12), and honest test counts (52 smoke on every PR, 10 live on schedule). Isolation is soft multi-tenancy on a shared graph — acceptable for a demo, not a multi-tenant SaaS.
+**Examiner one-liner:** I.N.A.Y.A.T. is a single-agent, production-pattern RAG system (Gemini + LlamaIndex PropertyGraphIndex + Neo4j + Mem0) with documented dual UIs, typed config, validated user ids, CI that matches Docker (Python 3.12), and honest test counts (59 smoke on every PR, 10 live on schedule). Isolation is soft multi-tenancy on a shared graph — acceptable for a demo, not a multi-tenant SaaS.
 
-See also: [STATUS.md](STATUS.md) (one-page examiner sheet).
+See also: [STATUS.md](STATUS.md) (one-page examiner sheet) and
+[Releases](https://github.com/Inayat-0007/INAYAT/releases) (`v1.1.0`).
 
 ---
 
@@ -79,7 +81,7 @@ Shipped on branch `cursor/what-and-how-to-fix-docs` (see [STATUS.md](STATUS.md) 
 
 | Area               | What changed                                                                                                                            |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Docs**           | Canonical README / STATUS / CONTEXT / LICENSE; `WHAT_TO_FIX.md` is historical inventory; examiner one-liner uses **52 smoke / 10 live** |
+| **Docs**           | Canonical README / STATUS / CONTEXT / LICENSE; `WHAT_TO_FIX.md` is historical inventory; examiner one-liner uses **59 smoke / 10 live** |
 | **Seed RAG**       | MIT sample PDFs in `data/documents/_samples/` (CEO fact: Dr. Inayat Hussain)                                                            |
 | **Config**         | `core/settings.py` (`InayatSettings`); chunk/model from env; overlap must be &lt; chunk size                                            |
 | **Identity**       | `core/identity.py` — `UserId.parse()` rejects `../` and `/`                                                                             |
@@ -94,7 +96,7 @@ Shipped on branch `cursor/what-and-how-to-fix-docs` (see [STATUS.md](STATUS.md) 
 | **Flags**          | MMR off by default; async ingest off by default (sync wait-for-200)                                                                     |
 | **Observability**  | `core/observability.py` — `event=query user_id=... route=... latency_ms=... source_count=... mem0_ok=... neo4j_ok=...`                  |
 | **SPA**            | Badges from API `route` / `used_memory` (not inferred from answer text); mock-graph banner; 403 copy for demo mode                      |
-| **Tests**          | 52 smoke (no keys required for new identity/settings/route tests) + `tests/test_api_contract.py` + live CEO skipUnless                  |
+| **Tests**          | 59 smoke (no keys required for new identity/settings/route tests) + `tests/test_api_contract.py` + live CEO skipUnless                  |
 
 ---
 
@@ -146,7 +148,12 @@ INAYAT/
 ├── activate.ps1                  # Windows launcher (sets INAYAT_DEMO_MODE)
 ├── requirements.txt
 ├── constraints.txt               # Pinned dependency versions
+├── VERSION                       # 1.1.0
+├── CHANGELOG.md                  # Keep a Changelog / SemVer history
+├── RELEASE_NOTES_v1.1.0.md       # GitHub Release body
 ├── .env.example
+├── .streamlit/
+│   └── config.toml               # Dark neon cyber theme (Streamlit)
 ├── LICENSE                       # MIT
 ├── STATUS.md                     # One-page examiner status
 ├── CONTEXT.md                    # Contributor module map
@@ -171,7 +178,7 @@ INAYAT/
 ├── frontend/                     # React SPA (Vite)
 ├── data/documents/_samples/      # MIT sample PDFs
 ├── tests/
-│   ├── smoke_test.py             # 52 tests (CI)
+│   ├── smoke_test.py             # 59 tests (CI)
 │   ├── test_api_contract.py      # FastAPI TestClient (loaded by smoke)
 │   └── backend_feature_test.py   # 10 live integration tests
 ├── .github/workflows/
@@ -225,7 +232,7 @@ Copy-Item -Recurse "data\documents\_samples\*" "data\documents\YourName\"
 docker compose up --build
 ```
 
-Serves FastAPI + built React at `http://localhost:8000`. Healthcheck: `GET /api/health`. Volume: `./data`.
+Serves FastAPI + built React at `http://localhost:8000`. Healthcheck: `GET /api/startup`. Volume: `./data`.
 
 Streamlit:
 
@@ -270,7 +277,7 @@ See `.env.example` for chunk size, top_k, log level, and memory context cap.
 ## 🧪 Testing Suite
 
 ```bash
-# CI smoke suite (52 tests) — no live keys required for identity/settings/route tests
+# CI smoke suite (59 tests) — no live keys required for identity/settings/route tests
 python tests/smoke_test.py
 
 # Live integration (10 tests — requires real API keys)
@@ -291,7 +298,7 @@ On push/PR to `main` or `master` (see [.github/workflows/ci.yml](.github/workflo
 2. **black** — formatting check
 3. **gitleaks** — secret scan
 4. **pip-audit** — dependency vulnerability scan
-5. **smoke tests** — `python tests/smoke_test.py` (52 tests)
+5. **smoke tests** — `python tests/smoke_test.py` (59 tests)
 
 **frontend-build** job (parallel): `npm ci` + `npm run build` in `frontend/`.
 
@@ -306,6 +313,8 @@ Python **3.12**, installs with `pip install -r requirements.txt -c constraints.t
 | File                                                       | Role                                               |
 | ---------------------------------------------------------- | -------------------------------------------------- |
 | [README.md](README.md)                                     | This file — install, architecture, canonical facts |
+| [CHANGELOG.md](CHANGELOG.md)                                | Version history (Keep a Changelog / SemVer)        |
+| [RELEASE_NOTES_v1.1.0.md](RELEASE_NOTES_v1.1.0.md)          | Notes for the current release                      |
 | [STATUS.md](STATUS.md)                                     | One-page examiner sheet + completed §10 order      |
 | [CONTEXT.md](CONTEXT.md)                                   | Contributor module map                             |
 | [WHAT_TO_FIX.md](WHAT_TO_FIX.md)                           | Issue inventory (superseded for counts)            |
