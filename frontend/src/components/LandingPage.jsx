@@ -72,7 +72,7 @@ export default function LandingPage({ onEnterWorkspace }) {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const alpha = (1 - dist / connectionDistance) * 0.25;
-            ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
+            ctx.strokeStyle = `rgba(191, 0, 255, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -92,8 +92,8 @@ export default function LandingPage({ onEnterWorkspace }) {
         height / 2,
         width * 0.7,
       );
-      grad.addColorStop(0, "#0c0b1c");
-      grad.addColorStop(1, "#040408");
+      grad.addColorStop(0, "#060309");
+      grad.addColorStop(1, "#020304");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
@@ -155,7 +155,7 @@ export default function LandingPage({ onEnterWorkspace }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-6xl md:text-8xl font-heading font-black tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-purple-400 to-cyber-magenta filter drop-shadow-[0_4px_20px_rgba(0,240,255,0.25)]"
+          className="text-6xl md:text-8xl font-heading font-black tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-purple-400 to-cyber-magenta filter drop-shadow-[0_4px_20px_rgba(57,255,20,0.25)]"
         >
           I.N.A.Y.A.T.
         </motion.h1>
@@ -208,7 +208,7 @@ export default function LandingPage({ onEnterWorkspace }) {
                 setNameInput(e.target.value);
                 setErrorMsg("");
               }}
-              className="w-full px-4 py-3 rounded-xl bg-cyber-bg/70 border border-cyber-border text-white placeholder-cyber-muted text-sm font-subheading text-center focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_15px_rgba(0,240,255,0.25)] transition-all duration-300"
+              className="w-full px-4 py-3 rounded-xl bg-cyber-bg/70 border border-cyber-border text-white placeholder-cyber-muted text-sm font-subheading text-center focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_15px_rgba(57,255,20,0.25)] transition-all duration-300"
             />
             {errorMsg && (
               <p className="text-xs text-cyber-magenta font-semibold mt-1">
@@ -235,7 +235,7 @@ export default function LandingPage({ onEnterWorkspace }) {
         >
           <div className="flex flex-col items-center p-3 rounded-xl bg-white/[0.02] border border-cyber-border/20">
             <span className="font-heading font-extrabold text-2xl text-cyber-cyan text-glow-cyan">
-              52
+              59
             </span>
             <span className="text-xs text-cyber-muted font-subheading mt-1">
               Smoke Tests (CI)

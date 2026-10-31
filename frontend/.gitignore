@@ -1,6 +1,5 @@
 # Vite/React standard ignores
 node_modules
-dist
 dist-ssr
 *.local
 .vscode

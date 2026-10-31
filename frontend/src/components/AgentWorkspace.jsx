@@ -126,12 +126,12 @@ export default function AgentWorkspace({ userId, setUserId }) {
           },
           edges: {
             width: 2,
-            color: { color: "rgba(129, 140, 248, 0.4)", highlight: "#c084fc" },
+            color: { color: "rgba(191, 0, 255, 0.4)", highlight: "#c084fc" },
             font: {
               color: "#a5b4fc",
               size: 10,
               align: "horizontal",
-              background: "#040408",
+              background: "#020304",
             },
             arrows: { to: { enabled: true, scaleFactor: 0.7 } },
             smooth: {
@@ -405,11 +405,11 @@ export default function AgentWorkspace({ userId, setUserId }) {
   const renderStatus = (status) => {
     if (status.includes("Connected")) {
       return (
-        <span className="w-2.5 h-2.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)] animate-pulse" />
+        <span className="w-2.5 h-2.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(57,255,20,0.7)] animate-pulse" />
       );
     } else if (status.includes("Fail") || status.includes("Unreachable")) {
       return (
-        <span className="w-2.5 h-2.5 rounded-full bg-cyber-magenta shadow-[0_0_8px_rgba(255,0,229,0.7)]" />
+        <span className="w-2.5 h-2.5 rounded-full bg-cyber-magenta shadow-[0_0_8px_rgba(191,0,255,0.7)]" />
       );
     } else {
       return <span className="w-2.5 h-2.5 rounded-full bg-zinc-600" />;
@@ -638,7 +638,7 @@ export default function AgentWorkspace({ userId, setUserId }) {
 
           <button
             onClick={() => setGraphOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-bg text-xs font-heading font-bold rounded-xl shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300"
+            className="flex items-center gap-2 px-4 py-2 border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-bg text-xs font-heading font-bold rounded-xl shadow-[0_0_12px_rgba(57,255,20,0.15)] transition-all duration-300"
           >
             <Share2 className="w-4 h-4 animate-spin-slow" /> Visualize Neural
             Graph
@@ -658,7 +658,7 @@ export default function AgentWorkspace({ userId, setUserId }) {
               </h3>
               <p className="text-xs text-cyber-muted leading-relaxed font-light font-body">
                 Upload your document database in the sidebar or ask questions
-                about Rahul's ML NLP classes to trigger property graphs.
+                about your documents and persistent memory to trigger property graphs.
               </p>
             </div>
           )}
@@ -749,7 +749,7 @@ export default function AgentWorkspace({ userId, setUserId }) {
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               disabled={loading}
-              className="flex-1 px-4 py-3 rounded-xl bg-cyber-bg border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_12px_rgba(0,240,255,0.15)] transition-all duration-300"
+              className="flex-1 px-4 py-3 rounded-xl bg-cyber-bg border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_12px_rgba(57,255,20,0.15)] transition-all duration-300"
             />
             <button
               type="submit"

@@ -8,15 +8,17 @@ export default {
     extend: {
       colors: {
         cyber: {
-          bg: '#040408',
-          deep: '#0A0E1A',
-          cyan: '#00F0FF',
-          magenta: '#FF00E5',
-          gold: '#FFD700',
+          bg: '#020304',
+          deep: '#070A08',
+          green: '#39FF14',
+          cyan: '#39FF14',
+          purple: '#BF00FF',
+          magenta: '#BF00FF',
+          gold: '#9DFF00',
           text: '#F4F4F5',
           muted: '#A1A1AA',
-          border: 'rgba(167, 139, 250, 0.15)',
-          glow: 'rgba(167, 139, 250, 0.35)',
+          border: 'rgba(57, 255, 20, 0.18)',
+          glow: 'rgba(57, 255, 20, 0.4)',
         }
       },
       fontFamily: {
@@ -31,8 +33,8 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.2), 0 0 10px rgba(0, 240, 255, 0.2)' },
-          '100%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.4)' }
+          '0%': { boxShadow: '0 0 5px rgba(57, 255, 20, 0.2), 0 0 10px rgba(57, 255, 20, 0.2)' },
+          '100%': { boxShadow: '0 0 15px rgba(57, 255, 20, 0.6), 0 0 25px rgba(57, 255, 20, 0.4)' }
         },
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(12px)' },

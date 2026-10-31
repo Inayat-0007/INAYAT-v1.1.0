@@ -43,7 +43,7 @@ html, body, [class*="css"] {
     font-family: 'Outfit', sans-serif;
 }
 .main {
-    background: radial-gradient(circle at 50% 0%, #0c0b1c 0%, #040408 75%);
+    background: radial-gradient(circle at 50% 0%, #060309 0%, #020304 75%);
 }
 
 /* Custom scrollbars */
@@ -52,14 +52,14 @@ html, body, [class*="css"] {
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #06060c;
+    background: #03060a;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(167, 139, 250, 0.25);
+    background: rgba(191, 0, 255, 0.25);
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(167, 139, 250, 0.5);
+    background: rgba(191, 0, 255, 0.5);
 }
 
 /* ── Hero Section ───────────────────────────── */
@@ -73,7 +73,7 @@ html, body, [class*="css"] {
         rgba(20, 18, 42, 0.72) 0%,
         rgba(10, 10, 24, 0.58) 100%
     );
-    border: 1px solid rgba(167, 139, 250, 0.16);
+    border: 1px solid rgba(191, 0, 255, 0.16);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow:
@@ -90,8 +90,8 @@ html, body, [class*="css"] {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(192, 132, 252, 0.55) 35%,
-        rgba(129, 140, 248, 0.55) 65%,
+        rgba(191, 0, 255, 0.55) 35%,
+        rgba(168, 85, 247, 0.55) 65%,
         transparent 100%
     );
 }
@@ -102,7 +102,7 @@ html, body, [class*="css"] {
     width: 55%; height: 180%;
     background: radial-gradient(
         ellipse at center,
-        rgba(99, 102, 241, 0.09) 0%,
+        rgba(139, 0, 255, 0.09) 0%,
         transparent 68%
     );
     pointer-events: none;
@@ -120,30 +120,30 @@ html, body, [class*="css"] {
     font-weight: 600;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: #c4b5fd;
+    color: #d9b3ff;
     margin-bottom: 0.7rem;
     padding: 0.32rem 0.8rem;
     border-radius: 100px;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.22);
+    background: rgba(191, 0, 255, 0.1);
+    border: 1px solid rgba(191, 0, 255, 0.22);
 }
 .hero-eyebrow-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: #34d399;
-    box-shadow: 0 0 8px rgba(52, 211, 153, 0.55);
+    background: #39FF14;
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.55);
     flex-shrink: 0;
     animation: pulse 2.2s ease-in-out infinite;
 }
 .hero-title {
     background: linear-gradient(
         120deg,
-        #f3e8ff 0%,
-        #d8b4fe 18%,
-        #c084fc 38%,
-        #818cf8 62%,
-        #6366f1 82%,
-        #a5b4fc 100%
+        #f2e6ff 0%,
+        #dca8ff 18%,
+        #BF00FF 38%,
+        #a855f7 62%,
+        #8b00ff 82%,
+        #c8a2ff 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -155,10 +155,10 @@ html, body, [class*="css"] {
     letter-spacing: 0.06em;
     line-height: 1.08;
     margin: 0 0 0.55rem 0;
-    filter: drop-shadow(0 2px 14px rgba(129, 140, 248, 0.28));
+    filter: drop-shadow(0 2px 14px rgba(168, 85, 247, 0.28));
 }
 .hero-title-sep {
-    -webkit-text-fill-color: rgba(192, 132, 252, 0.55);
+    -webkit-text-fill-color: rgba(191, 0, 255, 0.55);
     font-weight: 500;
 }
 .hero-sub {
@@ -198,8 +198,8 @@ html, body, [class*="css"] {
 
 /* ── Sidebar (2026 glass panel) ─────────────── */
 section[data-testid="stSidebar"] {
-    background: linear-gradient(165deg, #0a0914 0%, #040408 55%, #030306 100%);
-    border-right: 1px solid rgba(167, 139, 250, 0.14);
+    background: linear-gradient(165deg, #04050a 0%, #020304 55%, #010202 100%);
+    border-right: 1px solid rgba(191, 0, 255, 0.14);
     box-shadow: 4px 0 32px rgba(0, 0, 0, 0.45);
 }
 section[data-testid="stSidebar"] > div {
@@ -219,8 +219,8 @@ section[data-testid="stSidebar"] > div {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(167, 139, 250, 0.22) 35%,
-        rgba(129, 140, 248, 0.22) 65%,
+        rgba(191, 0, 255, 0.22) 35%,
+        rgba(168, 85, 247, 0.22) 65%,
         transparent 100%
     ) !important;
 }
@@ -236,7 +236,7 @@ section[data-testid="stSidebar"] > div {
         rgba(20, 18, 42, 0.72) 0%,
         rgba(10, 10, 24, 0.58) 100%
     );
-    border: 1px solid rgba(167, 139, 250, 0.16);
+    border: 1px solid rgba(191, 0, 255, 0.16);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow:
@@ -252,8 +252,8 @@ section[data-testid="stSidebar"] > div {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(192, 132, 252, 0.5) 40%,
-        rgba(129, 140, 248, 0.5) 60%,
+        rgba(191, 0, 255, 0.5) 40%,
+        rgba(168, 85, 247, 0.5) 60%,
         transparent 100%
     );
 }
@@ -264,7 +264,7 @@ section[data-testid="stSidebar"] > div {
     width: 60%; height: 140%;
     background: radial-gradient(
         ellipse at center,
-        rgba(99, 102, 241, 0.08) 0%,
+        rgba(139, 0, 255, 0.08) 0%,
         transparent 70%
     );
     pointer-events: none;
@@ -274,12 +274,12 @@ section[data-testid="stSidebar"] > div {
     z-index: 1;
     background: linear-gradient(
         120deg,
-        #f3e8ff 0%,
-        #d8b4fe 20%,
-        #c084fc 40%,
-        #818cf8 65%,
-        #6366f1 85%,
-        #a5b4fc 100%
+        #f2e6ff 0%,
+        #dca8ff 20%,
+        #BF00FF 40%,
+        #a855f7 65%,
+        #8b00ff 85%,
+        #c8a2ff 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -291,7 +291,7 @@ section[data-testid="stSidebar"] > div {
     letter-spacing: 0.05em;
     line-height: 1.15;
     margin: 0;
-    filter: drop-shadow(0 2px 10px rgba(129, 140, 248, 0.25));
+    filter: drop-shadow(0 2px 10px rgba(168, 85, 247, 0.25));
 }
 .sidebar-sub {
     position: relative;
@@ -314,18 +314,18 @@ section[data-testid="stSidebar"] > div {
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #c4b5fd;
+    color: #d9b3ff;
     margin-bottom: 0.5rem;
     padding: 0.28rem 0.65rem;
     border-radius: 100px;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.2);
+    background: rgba(191, 0, 255, 0.1);
+    border: 1px solid rgba(191, 0, 255, 0.2);
 }
 .sidebar-eyebrow-dot {
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: #34d399;
-    box-shadow: 0 0 6px rgba(52, 211, 153, 0.55);
+    background: #39FF14;
+    box-shadow: 0 0 6px rgba(57, 255, 20, 0.55);
     animation: pulse 2.2s ease-in-out infinite;
 }
 
@@ -344,8 +344,8 @@ section[data-testid="stSidebar"] > div {
     width: 28px; height: 28px;
     border-radius: 8px;
     font-size: 0.85rem;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.18);
+    background: rgba(191, 0, 255, 0.1);
+    border: 1px solid rgba(191, 0, 255, 0.18);
     flex-shrink: 0;
 }
 .sidebar-section-title {
@@ -373,7 +373,7 @@ section[data-testid="stSidebar"] > div {
     font-size: 0.8rem;
     font-weight: 500;
     background: rgba(12, 12, 22, 0.65);
-    border: 1px solid rgba(167, 139, 250, 0.12);
+    border: 1px solid rgba(191, 0, 255, 0.12);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
@@ -383,8 +383,8 @@ section[data-testid="stSidebar"] > div {
         transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .health-pill:hover {
-    border-color: rgba(167, 139, 250, 0.28);
-    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+    border-color: rgba(191, 0, 255, 0.28);
+    box-shadow: 0 4px 14px rgba(139, 0, 255, 0.12);
     transform: translateX(2px);
 }
 .health-dot {
@@ -394,8 +394,8 @@ section[data-testid="stSidebar"] > div {
     transition: box-shadow 0.18s ease;
 }
 .health-dot--up {
-    background: #34d399;
-    box-shadow: 0 0 8px rgba(52, 211, 153, 0.55);
+    background: #39FF14;
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.55);
     animation: pulse 2.2s ease-in-out infinite;
 }
 .health-dot--down {
@@ -433,9 +433,9 @@ section[data-testid="stSidebar"] > div {
     white-space: nowrap;
 }
 .health-pill-status--up {
-    color: #34d399;
-    background: rgba(52, 211, 153, 0.1);
-    border: 1px solid rgba(52, 211, 153, 0.22);
+    color: #39FF14;
+    background: rgba(57, 255, 20, 0.1);
+    border: 1px solid rgba(57, 255, 20, 0.22);
 }
 .health-pill-status--down {
     color: #f87171;
@@ -456,7 +456,7 @@ section[data-testid="stSidebar"] > div {
 /* Sidebar-scoped inputs & upload */
 [data-testid="stSidebar"] [data-testid="stFileUploader"] {
     background: rgba(10, 10, 20, 0.55) !important;
-    border: 1px dashed rgba(167, 139, 250, 0.28) !important;
+    border: 1px dashed rgba(191, 0, 255, 0.28) !important;
     border-radius: 12px !important;
     padding: 0.55rem 0.65rem !important;
     transition:
@@ -465,9 +465,9 @@ section[data-testid="stSidebar"] > div {
         box-shadow 0.18s ease !important;
 }
 [data-testid="stSidebar"] [data-testid="stFileUploader"]:hover {
-    border-color: rgba(167, 139, 250, 0.45) !important;
+    border-color: rgba(191, 0, 255, 0.45) !important;
     background: rgba(15, 15, 28, 0.65) !important;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.08) !important;
+    box-shadow: 0 0 20px rgba(139, 0, 255, 0.08) !important;
 }
 [data-testid="stSidebar"] [data-testid="stFileUploader"] section {
     padding: 0.35rem !important;
@@ -477,7 +477,7 @@ section[data-testid="stSidebar"] > div {
     font-size: 0.72rem !important;
 }
 [data-testid="stSidebar"] [data-testid="stFileUploader"] button {
-    background: linear-gradient(135deg, #a78bfa, #6366f1) !important;
+    background: linear-gradient(135deg, #c04dff, #8b00ff) !important;
     color: white !important;
     border: none !important;
     border-radius: 8px !important;
@@ -489,24 +489,24 @@ section[data-testid="stSidebar"] > div {
         transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 [data-testid="stSidebar"] [data-testid="stFileUploader"] button:hover {
-    box-shadow: 0 0 14px rgba(167, 139, 250, 0.35) !important;
+    box-shadow: 0 0 14px rgba(191, 0, 255, 0.35) !important;
     transform: translateY(-1px) !important;
 }
 [data-testid="stSidebar"] div[data-baseweb="input"] {
     background: rgba(8, 8, 15, 0.85) !important;
-    border: 1px solid rgba(167, 139, 250, 0.18) !important;
+    border: 1px solid rgba(191, 0, 255, 0.18) !important;
     border-radius: 10px !important;
     transition:
         border-color 0.18s ease,
         box-shadow 0.18s ease !important;
 }
 [data-testid="stSidebar"] div[data-baseweb="input"]:focus-within {
-    border-color: #818cf8 !important;
-    box-shadow: 0 0 10px rgba(129, 140, 248, 0.25) !important;
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.25) !important;
 }
 [data-testid="stSidebar"] button[kind="secondary"] {
     background: rgba(12, 12, 22, 0.75) !important;
-    border: 1px solid rgba(167, 139, 250, 0.18) !important;
+    border: 1px solid rgba(191, 0, 255, 0.18) !important;
     border-radius: 10px !important;
     font-size: 0.82rem !important;
     transition:
@@ -515,9 +515,9 @@ section[data-testid="stSidebar"] > div {
         transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 [data-testid="stSidebar"] button[kind="secondary"]:hover {
-    border-color: rgba(167, 139, 250, 0.4) !important;
-    color: #c4b5fd !important;
-    box-shadow: 0 0 12px rgba(167, 139, 250, 0.15) !important;
+    border-color: rgba(191, 0, 255, 0.4) !important;
+    color: #d9b3ff !important;
+    box-shadow: 0 0 12px rgba(191, 0, 255, 0.15) !important;
     transform: translateY(-1px) !important;
 }
 [data-testid="stSidebar"] [data-testid="stCheckbox"] label {
@@ -526,14 +526,14 @@ section[data-testid="stSidebar"] > div {
 }
 [data-testid="stSidebar"] [data-testid="stExpander"] {
     background: rgba(10, 10, 20, 0.5) !important;
-    border: 1px solid rgba(167, 139, 250, 0.12) !important;
+    border: 1px solid rgba(191, 0, 255, 0.12) !important;
     border-radius: 10px !important;
 }
 
 /* ── Chat messages ──────────────────────────── */
 .msg-user {
     background: linear-gradient(135deg, rgba(30, 27, 75, 0.65) 0%, rgba(20, 18, 55, 0.75) 100%);
-    border: 1px solid rgba(129, 140, 248, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     border-radius: 18px 18px 4px 18px;
     padding: 1rem 1.25rem; margin: 0.65rem 0;
     color: #f4f4f5;
@@ -543,7 +543,7 @@ section[data-testid="stSidebar"] > div {
 }
 .msg-assistant {
     background: linear-gradient(135deg, rgba(20, 20, 28, 0.7) 0%, rgba(15, 15, 22, 0.8) 100%);
-    border: 1px solid rgba(167, 139, 250, 0.2);
+    border: 1px solid rgba(191, 0, 255, 0.2);
     border-radius: 18px 18px 18px 4px;
     padding: 1rem 1.25rem; margin: 0.65rem 0;
     color: #e4e4e7;
@@ -554,30 +554,30 @@ section[data-testid="stSidebar"] > div {
 .msg-role {
     font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
     font-weight: 700; margin-bottom: 0.4rem;
-    color: #c084fc;
+    color: #BF00FF;
     font-family: 'Space Grotesk', sans-serif;
 }
 .msg-role-ai {
-    color: #34d399;
-    text-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+    color: #39FF14;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
 }
 
 /* ── Memory pills ───────────────────────────── */
 .mem-pill {
     display: inline-block;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.25);
+    background: rgba(191, 0, 255, 0.1);
+    border: 1px solid rgba(191, 0, 255, 0.25);
     border-radius: 100px;
     padding: 0.3rem 0.85rem;
     font-size: 0.78rem;
-    color: #c084fc;
+    color: #BF00FF;
     margin: 0.25rem 0.25rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: all 0.2s ease;
 }
 .mem-pill:hover {
-    border-color: rgba(167, 139, 250, 0.5);
-    background: rgba(167, 139, 250, 0.15);
+    border-color: rgba(191, 0, 255, 0.5);
+    background: rgba(191, 0, 255, 0.15);
     transform: scale(1.02);
 }
 
@@ -589,7 +589,7 @@ section[data-testid="stSidebar"] > div {
 
 /* ── Thinking spinner ───────────────────────── */
 .thinking {
-    color: #c084fc; font-style: italic; font-size: 0.9rem;
+    color: #BF00FF; font-style: italic; font-size: 0.9rem;
     padding: 0.5rem 1rem;
     animation: pulse 1.5s infinite;
 }
@@ -601,12 +601,12 @@ section[data-testid="stSidebar"] > div {
 /* ── File Uploader Styling ───────────────────── */
 [data-testid="stFileUploader"] {
     background: rgba(13, 13, 23, 0.5) !important;
-    border: 1px dashed rgba(167, 139, 250, 0.25) !important;
+    border: 1px dashed rgba(191, 0, 255, 0.25) !important;
     border-radius: 14px !important;
     padding: 0.6rem !important;
 }
 [data-testid="stFileUploader"] button {
-    background: linear-gradient(135deg, #c084fc, #6366f1) !important;
+    background: linear-gradient(135deg, #BF00FF, #8b00ff) !important;
     color: white !important;
     border: none !important;
     border-radius: 8px !important;
@@ -615,40 +615,40 @@ section[data-testid="stSidebar"] > div {
     transition: all 0.25s ease !important;
 }
 [data-testid="stFileUploader"] button:hover {
-    box-shadow: 0 0 15px rgba(167, 139, 250, 0.4) !important;
+    box-shadow: 0 0 15px rgba(191, 0, 255, 0.4) !important;
     transform: translateY(-1px) !important;
 }
 
 /* ── Text Input Styling ─────────────────────── */
 div[data-baseweb="input"] {
     background: rgba(8, 8, 15, 0.9) !important;
-    border: 1px solid rgba(167, 139, 250, 0.2) !important;
+    border: 1px solid rgba(191, 0, 255, 0.2) !important;
     border-radius: 10px !important;
     color: #f4f4f5 !important;
     transition: all 0.25s ease !important;
 }
 div[data-baseweb="input"]:focus-within {
-    border-color: #818cf8 !important;
-    box-shadow: 0 0 12px rgba(129, 140, 248, 0.3) !important;
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3) !important;
 }
 
 /* ── Button Styling ─────────────────────────── */
 button[kind="secondary"] {
     background: rgba(13, 13, 23, 0.8) !important;
-    border: 1px solid rgba(167, 139, 250, 0.2) !important;
+    border: 1px solid rgba(191, 0, 255, 0.2) !important;
     border-radius: 10px !important;
     color: #e4e4e7 !important;
     transition: all 0.25s ease !important;
 }
 button[kind="secondary"]:hover {
-    border-color: #c084fc !important;
-    color: #c084fc !important;
-    box-shadow: 0 0 12px rgba(167, 139, 250, 0.2) !important;
+    border-color: #BF00FF !important;
+    color: #BF00FF !important;
+    box-shadow: 0 0 12px rgba(191, 0, 255, 0.2) !important;
 }
 
 /* ── Checkbox Styling ───────────────────────── */
 span[data-baseweb="checkbox"] > div {
-    border-color: rgba(167, 139, 250, 0.5) !important;
+    border-color: rgba(191, 0, 255, 0.5) !important;
 }
 [data-testid="stCheckbox"] label {
     color: #a1a1aa !important;
@@ -732,13 +732,35 @@ def _sidebar_section(icon: str, title: str) -> None:
 def _health_pill_html(status: str, label: str) -> str:
     """Convert emoji status string to a modern health pill."""
     if "🟢" in status or "Connected" in status:
-        dot_cls, status_cls, text = "health-dot--up", "health-pill-status--up", "Connected"
+        dot_cls, status_cls, text = (
+            "health-dot--up",
+            "health-pill-status--up",
+            "Connected",
+        )
     elif "🔴" in status or "Unreachable" in status or "Forced" in status:
-        dot_cls, status_cls, text = "health-dot--down", "health-pill-status--down", status.replace("🟢 ", "").replace("🔴 ", "").replace("🟡 ", "").replace("⚪ ", "")
+        dot_cls, status_cls, text = (
+            "health-dot--down",
+            "health-pill-status--down",
+            status.replace("🟢 ", "")
+            .replace("🔴 ", "")
+            .replace("🟡 ", "")
+            .replace("⚪ ", ""),
+        )
     elif "🟡" in status or "Degraded" in status:
-        dot_cls, status_cls, text = "health-dot--warn", "health-pill-status--warn", "Degraded"
+        dot_cls, status_cls, text = (
+            "health-dot--warn",
+            "health-pill-status--warn",
+            "Degraded",
+        )
     else:
-        dot_cls, status_cls, text = "health-dot--idle", "health-pill-status--idle", status.replace("🟢 ", "").replace("🔴 ", "").replace("🟡 ", "").replace("⚪ ", "")
+        dot_cls, status_cls, text = (
+            "health-dot--idle",
+            "health-pill-status--idle",
+            status.replace("🟢 ", "")
+            .replace("🔴 ", "")
+            .replace("🟡 ", "")
+            .replace("⚪ ", ""),
+        )
     return (
         f"<div class='health-pill'>"
         f"<span class='health-dot {dot_cls}' aria-hidden='true'></span>"
@@ -792,6 +814,11 @@ def _render_sidebar() -> None:
             st.query_params["user"] = name
             st.session_state.messages = st.session_state.get(f"messages_{name}", [])
             st.rerun()
+
+        # User-scoped panels below require a profile. The landing page runs
+        # this sidebar before a user_id exists, so stop here in that case.
+        if not st.session_state.user_id:
+            return
 
         st.markdown("---")
 
@@ -872,15 +899,17 @@ def _render_sidebar() -> None:
                 else:
                     names = ", ".join(to_index)
                     try:
-                        with st.spinner(
-                            f"Indexing {len(to_index)} file(s): {names}"
-                        ):
+                        with st.spinner(f"Indexing {len(to_index)} file(s): {names}"):
                             result = build_index(
                                 st.session_state.user_id, only_files=to_index
                             )
                         if result is None:
-                            err = get_index_status(st.session_state.user_id).get("error")
-                            st.error(err or "Index build returned no index. Check logs.")
+                            err = get_index_status(st.session_state.user_id).get(
+                                "error"
+                            )
+                            st.error(
+                                err or "Index build returned no index. Check logs."
+                            )
                         else:
                             st.success("Graph index updated!")
                             st.rerun()
@@ -975,7 +1004,9 @@ def _render_sidebar() -> None:
                 st.rerun()
 
         if not demo_mode:
-            st.caption("Set INAYAT_DEMO_MODE=true to enable circuit breaker demo toggles.")
+            st.caption(
+                "Set INAYAT_DEMO_MODE=true to enable circuit breaker demo toggles."
+            )
         elif fail_mem0 or fail_neo4j:
             st.warning(
                 "Circuit breaker(s) forced OPEN. Systems running in degraded mode."
@@ -1008,13 +1039,13 @@ def _render_sidebar() -> None:
 - Point out Service Health: all services `🟢 Connected`.
 
 **2. Memory Injection**
-- Enter name: e.g. **Rahul**
+- Enter name: e.g. **Inayat**
 - Say: `I am a machine learning student. I love NLP.`
 - Facts are stored in Mem0 cloud.
 
 **3. Persistence Test**
 - Hard-refresh the page (simulated browser restart).
-- The URL preserves `?user=Rahul`.
+- The URL preserves `?user=Inayat`.
 - Ask: `What do you know about me?`
 - Agent recalls your facts from Mem0.
 
@@ -1068,8 +1099,8 @@ def main() -> None:
         st.markdown(
             """
         <div style="padding: 1rem 0; margin-top: 0.5rem; animation: fadeUp 0.4s ease-out; text-align: center;">
-            <div style="background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%); 
-                        border: 1px solid rgba(167, 139, 250, 0.18); 
+            <div style="background: linear-gradient(135deg, rgba(191, 0, 255, 0.08) 0%, rgba(139, 0, 255, 0.08) 100%); 
+                        border: 1px solid rgba(191, 0, 255, 0.18); 
                         padding: 3.5rem 2rem; border-radius: 24px; max-width: 850px; margin: 0 auto;
                         box-shadow: 0 20px 40px rgba(0,0,0,0.5); backdrop-filter: blur(16px);">
         """,
@@ -1085,7 +1116,7 @@ def main() -> None:
 
         st.markdown(
             """
-                <h2 style="background: linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #6366f1 100%);
+                <h2 style="background: linear-gradient(135deg, #c04dff 0%, #a855f7 50%, #8b00ff 100%);
                            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
                            font-size: 2.8rem; font-weight: 800; margin-top: 1rem; margin-bottom: 0.75rem; letter-spacing: -0.03em;">
                     I.N.A.Y.A.T.
@@ -1137,26 +1168,26 @@ def main() -> None:
                 🛡️ Core Architectural Pillars
             </h3>
             <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; text-align: left;">
-                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(167, 139, 250, 0.15); 
+                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(191, 0, 255, 0.15); 
                             padding: 1.8rem; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.25);">
                     <div style="font-size: 2rem; margin-bottom: 0.75rem;">🧠</div>
-                    <h4 style="color: #a78bfa; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Persistent Memory</h4>
+                    <h4 style="color: #c04dff; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Persistent Memory</h4>
                     <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; margin: 0; font-weight: 300;">
                         Integrates Mem0 cloud infrastructure to extract, store, and recall personal facts and user preferences dynamically across application sessions.
                     </p>
                 </div>
-                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(99, 102, 241, 0.15); 
+                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(139, 0, 255, 0.15); 
                             padding: 1.8rem; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.25);">
                     <div style="font-size: 2rem; margin-bottom: 0.75rem;">🕸️</div>
-                    <h4 style="color: #818cf8; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Knowledge Graph RAG</h4>
+                    <h4 style="color: #a855f7; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Knowledge Graph RAG</h4>
                     <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; margin: 0; font-weight: 300;">
                         Combines LlamaIndex with Neo4j AuraDB graph databases to traverse entity-relation nodes, delivering high-precision contextual search results.
                     </p>
                 </div>
-                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(52, 211, 153, 0.15); 
+                <div style="flex: 1; min-width: 280px; background: rgba(15, 15, 24, 0.4); border: 1px solid rgba(57, 255, 20, 0.15); 
                             padding: 1.8rem; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.25);">
                     <div style="font-size: 2rem; margin-bottom: 0.75rem;">🛡️</div>
-                    <h4 style="color: #34d399; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Self-Healing Resilience</h4>
+                    <h4 style="color: #39FF14; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 0;">Self-Healing Resilience</h4>
                     <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; margin: 0; font-weight: 300;">
                         Implemented with custom active circuit breakers that isolate connection faults and downgrade gracefully, maintaining uptime at all times.
                     </p>
@@ -1346,7 +1377,7 @@ def main() -> None:
                 body {{
                     margin: 0;
                     padding: 0;
-                    background-color: #040408;
+                    background-color: #020304;
                     font-family: 'Outfit', sans-serif;
                     overflow: hidden;
                 }}
@@ -1355,8 +1386,8 @@ def main() -> None:
                     flex-direction: row;
                     width: 100%;
                     height: 520px;
-                    background: #080810;
-                    border: 1px solid rgba(167, 139, 250, 0.15);
+                    background: #04060b;
+                    border: 1px solid rgba(191, 0, 255, 0.15);
                     border-radius: 16px;
                     overflow: hidden;
                     box-sizing: border-box;
@@ -1371,7 +1402,7 @@ def main() -> None:
                     width: 32%;
                     height: 100%;
                     background: rgba(13, 13, 23, 0.95);
-                    border-left: 1px solid rgba(167, 139, 250, 0.15);
+                    border-left: 1px solid rgba(191, 0, 255, 0.15);
                     padding: 1.2rem;
                     box-sizing: border-box;
                     display: flex;
@@ -1387,8 +1418,8 @@ def main() -> None:
                     letter-spacing: 0.05em;
                     margin-bottom: 1rem;
                     padding-bottom: 0.5rem;
-                    border-bottom: 1px solid rgba(167, 139, 250, 0.2);
-                    background: linear-gradient(135deg, #c084fc, #818cf8);
+                    border-bottom: 1px solid rgba(191, 0, 255, 0.2);
+                    background: linear-gradient(135deg, #BF00FF, #a855f7);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }}
@@ -1417,14 +1448,14 @@ def main() -> None:
                     text-transform: uppercase;
                     margin-top: 0.35rem;
                 }}
-                .tag-agent {{ background: rgba(167, 139, 250, 0.15); color: #c084fc; border: 1px solid rgba(167, 139, 250, 0.3); }}
-                .tag-llm {{ background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }}
-                .tag-memory {{ background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); }}
-                .tag-graph {{ background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); }}
+                .tag-agent {{ background: rgba(191, 0, 255, 0.15); color: #BF00FF; border: 1px solid rgba(191, 0, 255, 0.3); }}
+                .tag-llm {{ background: rgba(57, 255, 20, 0.15); color: #39FF14; border: 1px solid rgba(57, 255, 20, 0.3); }}
+                .tag-memory {{ background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }}
+                .tag-graph {{ background: rgba(191, 0, 255, 0.15); color: #BF00FF; border: 1px solid rgba(191, 0, 255, 0.3); }}
                 .tag-resilience {{ background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }}
-                .tag-user {{ background: rgba(244, 114, 182, 0.15); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); }}
-                .tag-chunk {{ background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }}
-                .tag-entity {{ background: rgba(129, 140, 248, 0.15); color: #a5b4fc; border: 1px solid rgba(129, 140, 248, 0.3); }}
+                .tag-user {{ background: rgba(200, 162, 255, 0.15); color: #c8a2ff; border: 1px solid rgba(200, 162, 255, 0.3); }}
+                .tag-chunk {{ background: rgba(125, 138, 133, 0.15); color: #cbd5e1; border: 1px solid rgba(125, 138, 133, 0.3); }}
+                .tag-entity {{ background: rgba(168, 85, 247, 0.15); color: #c8a2ff; border: 1px solid rgba(168, 85, 247, 0.3); }}
                 
                 .prop-box {{
                     background: rgba(15, 15, 24, 0.6);
@@ -1439,7 +1470,7 @@ def main() -> None:
                     word-break: break-word;
                 }}
                 .use-btn {{
-                    background: linear-gradient(135deg, #c084fc 0%, #6366f1 100%);
+                    background: linear-gradient(135deg, #BF00FF 0%, #8b00ff 100%);
                     color: white;
                     border: none;
                     border-radius: 8px;
@@ -1453,10 +1484,10 @@ def main() -> None:
                     gap: 0.4rem;
                     margin-top: 1rem;
                     transition: all 0.25s ease;
-                    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+                    box-shadow: 0 4px 12px rgba(139, 0, 255, 0.3);
                 }}
                 .use-btn:hover {{
-                    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+                    box-shadow: 0 6px 18px rgba(139, 0, 255, 0.5);
                     transform: translateY(-1px);
                 }}
                 .use-btn:active {{
@@ -1466,7 +1497,7 @@ def main() -> None:
                 #toast {{
                     visibility: hidden;
                     min-width: 240px;
-                    background-color: #10b981;
+                    background-color: #39FF14;
                     color: #fff;
                     text-align: center;
                     border-radius: 8px;
@@ -1477,7 +1508,7 @@ def main() -> None:
                     right: 20px;
                     font-size: 0.8rem;
                     font-weight: 600;
-                    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.45);
+                    box-shadow: 0 4px 15px rgba(57, 255, 20, 0.45);
                     opacity: 0;
                     transition: opacity 0.3s, visibility 0.3s;
                 }}
@@ -1527,12 +1558,12 @@ def main() -> None:
                 }},
                 edges: {{
                     width: 2,
-                    color: {{ color: 'rgba(129, 140, 248, 0.4)', highlight: '#c084fc' }},
+                    color: {{ color: 'rgba(168, 85, 247, 0.4)', highlight: '#BF00FF' }},
                     font: {{
-                        color: '#a5b4fc',
+                        color: '#c8a2ff',
                         size: 10,
                         align: 'horizontal',
-                        background: '#040408'
+                        background: '#020304'
                     }},
                     arrows: {{
                         to: {{ enabled: true, scaleFactor: 0.7 }}
@@ -1544,14 +1575,14 @@ def main() -> None:
                     }}
                 }},
                 groups: {{
-                    Agent: {{ color: {{ background: '#c084fc', border: '#a78bfa' }} }},
-                    LLM: {{ color: {{ background: '#34d399', border: '#059669' }} }},
-                    Memory: {{ color: {{ background: '#60a5fa', border: '#2563eb' }} }},
-                    GraphStore: {{ color: {{ background: '#fb7185', border: '#e11d48' }} }},
+                    Agent: {{ color: {{ background: '#BF00FF', border: '#c04dff' }} }},
+                    LLM: {{ color: {{ background: '#39FF14', border: '#39FF14' }} }},
+                    Memory: {{ color: {{ background: '#a855f7', border: '#8b00ff' }} }},
+                    GraphStore: {{ color: {{ background: '#BF00FF', border: '#7a00b3' }} }},
                     Resilience: {{ color: {{ background: '#fbbf24', border: '#d97706' }} }},
-                    User: {{ color: {{ background: '#f472b6', border: '#db2777' }} }},
-                    Entity: {{ color: {{ background: '#818cf8', border: '#6366f1' }} }},
-                    Chunk: {{ color: {{ background: '#94a3b8', border: '#475569' }} }}
+                    User: {{ color: {{ background: '#c8a2ff', border: '#a855f7' }} }},
+                    Entity: {{ color: {{ background: '#a855f7', border: '#8b00ff' }} }},
+                    Chunk: {{ color: {{ background: '#7d8a85', border: '#2f3a36' }} }}
                 }},
                 physics: {{
                     stabilization: false,
@@ -1693,7 +1724,7 @@ def main() -> None:
                 
                 html += '<div class="drawer-section">';
                 html += '<div class="section-label">Relationship Path</div>';
-                html += '<div class="section-val" style="color:#c084fc; font-weight:600;">→ ' + escapeHtml(relType) + ' →</div>';
+                html += '<div class="section-val" style="color:#BF00FF; font-weight:600;">→ ' + escapeHtml(relType) + ' →</div>';
                 html += '</div>';
                 
                 html += '<div class="drawer-section">';

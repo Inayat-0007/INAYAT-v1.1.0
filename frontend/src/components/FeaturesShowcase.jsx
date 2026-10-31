@@ -51,7 +51,7 @@ export default function FeaturesShowcase() {
     {
       icon: <Award className="w-6 h-6 text-amber-500" />,
       title: "Industrial Code Quality",
-      desc: "Backed by 52 smoke tests plus 10 live integration tests; CI runs smoke and frontend build on every PR.",
+      desc: "Backed by 59 smoke tests plus 10 live integration tests; CI runs smoke and frontend build on every PR.",
     },
   ];
 
@@ -73,7 +73,7 @@ export default function FeaturesShowcase() {
             key={idx}
             whileHover={{ y: -6, scale: 1.01 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 rounded-2xl glass border border-cyber-border hover:border-cyber-cyan/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.08)] transition-all duration-300 relative group"
+            className="p-6 rounded-2xl glass border border-cyber-border hover:border-cyber-cyan/50 hover:shadow-[0_8px_30px_rgba(57,255,20,0.08)] transition-all duration-300 relative group"
           >
             {/* Hover Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-tr from-cyber-cyan/0 to-cyber-cyan/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

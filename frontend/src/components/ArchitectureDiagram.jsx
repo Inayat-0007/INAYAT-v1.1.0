@@ -59,7 +59,7 @@ export default function ArchitectureDiagram() {
       id: 1,
       title: "1. User Profiling",
       role: "User Session Isolation",
-      desc: "Authenticates name query parameters (?user=Rahul) to lock document files, chats, and indexes in isolated sandboxes.",
+      desc: "Authenticates name query parameters (?user=Inayat) to lock document files, chats, and indexes in isolated sandboxes.",
       x: 100,
       y: 120,
     },
@@ -164,7 +164,7 @@ export default function ArchitectureDiagram() {
           <div className="mt-6 border-t border-cyber-border/40 pt-4 flex justify-between items-center text-[10px] font-heading uppercase text-cyber-muted">
             <span>Core Pipeline Status</span>
             <span className="flex items-center gap-1 text-green-400 font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" /> 19 Smoke Tests Passing
+              <CheckCircle2 className="w-3.5 h-3.5" /> 59 Smoke Tests Passing
             </span>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function ArchitectureDiagram() {
             <path
               d="M 400 120 L 400 220"
               fill="none"
-              stroke="rgba(167, 139, 250, 0.4)"
+              stroke="rgba(191, 0, 255, 0.4)"
               strokeWidth="2"
               strokeDasharray="4 4"
             />
@@ -237,7 +237,7 @@ export default function ArchitectureDiagram() {
                   <text
                     y="4"
                     textAnchor="middle"
-                    fill={isBreakerActive || isActive ? "#040408" : "#F4F4F5"}
+                    fill={isBreakerActive || isActive ? "#020304" : "#F4F4F5"}
                     fontSize="11"
                     fontWeight="bold"
                     className="font-heading pointer-events-none"
@@ -294,7 +294,7 @@ export default function ArchitectureDiagram() {
             <button
               onClick={() => toggleBreaker("mem0", breakerMem0, setBreakerMem0)}
               disabled={loading}
-              className={`w-14 h-8 rounded-full p-1 transition-all duration-300 relative ${breakerMem0 ? "bg-cyber-magenta shadow-[0_0_15px_rgba(255,0,229,0.5)]" : "bg-zinc-800 border border-zinc-700"}`}
+              className={`w-14 h-8 rounded-full p-1 transition-all duration-300 relative ${breakerMem0 ? "bg-cyber-magenta shadow-[0_0_15px_rgba(191,0,255,0.5)]" : "bg-zinc-800 border border-zinc-700"}`}
             >
               <div
                 className={`w-6 h-6 rounded-full bg-white transition-transform duration-300 flex items-center justify-center ${breakerMem0 ? "transform translate-x-6" : ""}`}
@@ -328,7 +328,7 @@ export default function ArchitectureDiagram() {
                 toggleBreaker("neo4j", breakerNeo4j, setBreakerNeo4j)
               }
               disabled={loading}
-              className={`w-14 h-8 rounded-full p-1 transition-all duration-300 relative ${breakerNeo4j ? "bg-cyber-magenta shadow-[0_0_15px_rgba(255,0,229,0.5)]" : "bg-zinc-800 border border-zinc-700"}`}
+              className={`w-14 h-8 rounded-full p-1 transition-all duration-300 relative ${breakerNeo4j ? "bg-cyber-magenta shadow-[0_0_15px_rgba(191,0,255,0.5)]" : "bg-zinc-800 border border-zinc-700"}`}
             >
               <div
                 className={`w-6 h-6 rounded-full bg-white transition-transform duration-300 flex items-center justify-center ${breakerNeo4j ? "transform translate-x-6" : ""}`}
